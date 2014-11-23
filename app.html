@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<title>draftnote</title>
+<meta charset='utf-8'>
+  <style>
+    html {
+      height: 100%;
+      overflow-y: scroll;
+    }
+    body {
+      margin: 20px;
+      font-size: 100%;
+      cursor: text;
+    }
+    #header {
+      height: 30px;
+      width: 100%;
+      position: fixed;
+      background-color: #263238;
+      top: 0px;
+      left: 0px;
+      color: #fff;
+      padding-left: 20px;
+      font-weight: bold;
+    }
+    #b {
+      /*margin-top: 35px;*/
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+  </style>
+  <script src='appStorage.js'></script>
+  <script src='app.js'></script>
+</head>
+  <body id='b' contenteditable>
+  </body>
+</html>
