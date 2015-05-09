@@ -1,17 +1,17 @@
 {
+  "name": "Draftnote",
+  "description": "My first chrome application",
+  "version": "0.0.2",
   "manifest_version": 2,
-  "version": "2014.11.23.2054",
   "app": {
     "background": {
       "scripts": ["background.js"]
     }
   },
-  "name": "draftnote",
-  "description": "draftnoteは、とてもシンプルなメモ帳です。",
-  "permissions": ["unlimitedStorage", "storage", "<all_urls>"],
   "icons": {
-      "128": "icon.png",
-      "48": "icon.png",
-      "16": "icon.png"
-   }
+    "48":  "icon.png",
+    "16":  "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": ["storage", "unlimitedStorage", "<all_urls>"]
 }

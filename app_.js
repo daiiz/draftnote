@@ -39,9 +39,7 @@ app.count_char = function() {
   var box_area = document;//app.stage();
   var textboxs = box_area.getElementsByClassName('editor');
   for(var i = 0; i < textboxs.length; i++) {
-    var rows = textboxs[i].value.split('\n').length;
-    var text = textboxs[i].value.replace(/\n/gi, '');
-    app.stage().textboxs[i].rows = rows + 1;
+    var text = textboxs[i].innerText.replace(/\n/gi, '');
     app.stage().textboxs[i].char_nums = text.length;
   }
 }
@@ -68,8 +66,7 @@ app.insert_new_editbox = function(msg) {
       "urls": [],
       "tool_detail": '',
       "tool_detail_show": 'none',
-      "runtime_id": box_area.textboxs.length,
-      "rows": msg.split('\n').length + 1
+      "runtime_id": box_area.textboxs.length
     });
   }
   return;
@@ -84,7 +81,7 @@ app.sava_to_storage = function() {
   var box_area = document;
   var textboxs = box_area.getElementsByClassName('editor');
   for(var i = 0; i < textboxs.length; i++) {
-    var memo = memo + app.memoDivLine + textboxs[i].value;
+    var memo = memo + app.memoDivLine + textboxs[i].innerText;
   }
   appStorage({"key": app.memoStoreKey2, "value": memo}, "set", function(e) {
     console.log("Saved locally.");
@@ -113,7 +110,7 @@ app.hasURL = function(){
   var box_area = document;
   var textboxs = box_area.getElementsByClassName('editor');
   for(var j = 0; j < textboxs.length; j++) {
-    var text = textboxs[j].value;
+    var text = textboxs[j].innerText;
     var urls = text.match(/https?:\/\/[\w/:%#\$&\?\(\)~\.=\+\-]+/g) || [];
     var res = [];
     for(var i=0; i < urls.length; i++) {

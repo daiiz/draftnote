@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <title>draftnote</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#beef00" />
+  <link rel="icon" sizes="192x192" href="icon.png" />
+  <link href="app.css" rel="stylesheet" type="text/css" />
+  <!-- polymer -->
+  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <link rel="import" href="bower_components/polymer/polymer.html" />
+  <link rel="import" href="bower_components/paper-fab/paper-fab.html" />
+  <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="../bower_components/paper-button/paper-button.html">
+  <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+  <link rel="import" href="../bower_components/font-roboto/roboto.html">
+</head>
+<body>
+  <!-- body -->
+  <template repeat="{{box in textboxs}}" id="stage" is="auto-binding">
+    <!--div class='char_counter'>{{box.char_nums || 0}}</div-->
+    <div class="edit_area">
+      <textarea contenteditable spellcheck=false class="editor" id="editor_{{box.runtime_id}}" rows="{{box.rows}}">{{box.content}}</textarea>
+      <div class="toolbox">
+        <paper-icon-button icon="link" style="display:inline-block; color:{{box.btn_link}}" halign="right" class="toolbtn lb" id="link_btn_{{box.runtime_id}}" role="button" tabindex="0" aria-label="link">
+        </paper-icon-button>
+        <div class="toolbtn lc" style="display:inline-block">
+          {{box.char_nums || 0}}
+        </div>
+      </div>
+      <div class=tooldetail style="display: {{box.tool_detail_show}}" id="tooldetail_{{box.runtime_id}}">
+      </div>
+    </div>
+  </template>
+  <paper-fab icon="add" role="button" tabindex="0" id="btn_requast_new_editbox" class="fab"></paper-fab>
+  <script src="appStorage.js"></script>
+  <script src="app.js"></script>
+</body>
