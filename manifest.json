@@ -1,7 +1,7 @@
 {
   "name": "Draftnote",
   "description": "My first chrome application",
-  "version": "0.2.0",
+  "version": "2015.5.10.1112",
   "manifest_version": 2,
   "app": {
     "background": {
