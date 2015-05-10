@@ -75,9 +75,41 @@ app.insert_new_editbox = function(msg) {
   return;
 }
 
+/* Backup user dara of ver 0.0.1
+ * アプリのアップデートに伴う移行作業のためのバックアップ機能
+ */
+app.memoBackUpStoreKey = 'UserBkp1';
+app.memoBackUpTargetKey = 'UserMemo';
+app.save_to_bkp_storage = function(callback) {
+  appStorage(app.memoBackUpStoreKey, "get", function(ee) {
+    if(ee[app.memoBackUpStoreKey] == undefined) {
+      /* get from storage of 0.0.1 */
+      appStorage(app.memoBackUpTargetKey, "get", function(e) {
+        if(e[app.memoBackUpTargetKey] != undefined) {
+          /* バックアップを行う */
+          appStorage({"key": app.memoBackUpStoreKey, "value": e[app.memoBackUpTargetKey]}, "set", function(e) {
+            console.info('Backup: successfully saved.');
+            callback();
+          });
+        }else {
+          /* 空のバックアップ領域を生成する */
+          console.info('Backup: pass (no "{}")'.format(app.memoBackUpTargetKey));
+          appStorage({"key": app.memoBackUpStoreKey, "value": ""}, "set", function(e) {
+            console.info('Backup: successfully saved.');
+            callback();
+          });
+        }
+      });
+    }else {
+      /* 新たなバックアップな場合はスキップする */
+      console.info('Backup: pass (already exists "{}")'.format(app.memoBackUpStoreKey));
+      callback();
+    }
+  });
+}
 
 /* Store memos */
-app.memoStoreKey2 = 'UserMemo2';
+app.memoStoreKey2 = 'UserMemo';
 app.memoDivLine = '--**--**--'
 app.sava_to_storage = function() {
   var memo = '';
@@ -136,7 +168,7 @@ app.hasURL = function(){
 
 /* Event Listeners */
 window.addEventListener('load', function(e) {
-  app.restore_from_storage();
+  app.save_to_bkp_storage(app.restore_from_storage);
 }, false);
 
 window.addEventListener('keyup', function(e) {
