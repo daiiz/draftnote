@@ -110,7 +110,7 @@ app.save_to_bkp_storage = function(callback) {
 
 /* Store memos */
 app.memoStoreKey2 = 'UserMemo';
-app.memoDivLine = '--**--**--'
+app.memoDivLine = '--**--**--';
 app.sava_to_storage = function() {
   var memo = '';
   var box_area = document;

@@ -1,6 +1,6 @@
 {
   "name": "Draftnote",
-  "description": "My first chrome application",
+  "description": "Draftnoteは、シンプルなメモ帳です。最新バージョンでは、機能とアイコンがスマートになりました。",
   "version": "2015.5.10.1112",
   "manifest_version": 2,
   "app": {
